@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contac us Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    
+    <form method="post">
+      <h1>Send Your Tips & Tick </h1>
+      <p id="para"></p>
+      <input type="text" id="name" placeholder="Enter Your Name" required />
+      <input type="email" id="email" placeholder="Enter Your Email" required />
+      <input type="text" id="country" placeholder="Enter Your Country" required />
+      <input type="text" id="subject" placeholder="Enter Your subject" required />
+      <textarea id="message" rows="4" placeholder="How can help me ?"></textarea>
+      <button type="submit" id="submit">Send</button>
+    </form>
+
+  </div>
+  <!-- send email link smtpjs -->
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script>
+    let send = document.getElementById('submit');
+     send.addEventListener('click', function(e){
+          e.preventDefault();
+          let email = document.getElementById('email').value;
+          let name = document.getElementById("name").value;
+          let subject = document.getElementById('subject').value ;
+          let country = document.getElementById('country').value ;
+          let message = document.getElementById("message").value;
+
+          Email.send({
+             Host : "Smtp.gmail.com",
+             Username : "gmail name",
+             Password : "app password",
+              To :"reffer gmail",
+              From : email ,
+              Subject : subject,
+              Body : 'Name : ' + name + "<br> Email : " + email + "<br> County Name : " + country+ "<br> Description : " + message
+}).then(
+  message => document.getElementById('para').innerHTML= "message sent successfully"
+)
+ });
+  </script>
+</body>
+</html>
